@@ -16,7 +16,7 @@ export function CarouselHome() {
               off: "bg-[#E0DAE1] z-50",
             },
             wrapper:
-              "h-full absolute top-0 hidden lg:flex lg:left-24 flex flex-col justify-center gap-2",
+              "h-full absolute top-0 hidden lg:flex lg:left-12 flex flex-col justify-center gap-2",
             base: "w-[9.5px] h-[9.5px] rounded-full",
           },
           control: {
