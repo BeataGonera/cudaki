@@ -1,0 +1,39 @@
+@keyframes grow {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  100% {
+    width: 221px;
+    height: 221px;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    width: 221px;
+    height: 221px;
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+.container:hover .dot {
+  animation-name: grow;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.container:hover .dot {
+  animation-name: grow;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.container:not(:hover) .dot {
+  animation-name: shrink;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
