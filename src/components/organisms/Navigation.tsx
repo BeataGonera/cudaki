@@ -5,8 +5,8 @@ import ButtonOutlined from "../atoms/ButtonOutlined";
 
 const Navigation = () => {
   return (
-    <nav className="w-full h-[55px] mt-24">
-      <div className="px-2 lg:px-24 2xl:px-128 flex justify-between items-center">
+    <nav className="w-full h-[55px] mt-4 lg:mt-24">
+      <div className="hidden lg:flex px-2 lg:px-24 2xl:px-128 justify-between items-center">
         <LogoSmall />
         <div className="flex gap-[32px] font-bold items-center">
           <div className="flex gap-[14px] font-bold items-center">
