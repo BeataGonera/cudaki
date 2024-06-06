@@ -7,9 +7,9 @@ const CardNews = () => {
   return (
     <Link
       href="/"
-      className="w-full flex flex-col rounded-lg bg-[#E0DAE1] p-[16px] h-[463px] gap-[16px]"
+      className="w-full flex lg:flex-col rounded-lg bg-[#E0DAE1] p-[16px] h-[193px] lg:h-[463px] gap-[16px]"
     >
-      <div className="w-full h-[191px] relative">
+      <div className="w-full h-full lg:h-[191px] lg:min-h-[191px] relative">
         <Image
           src="/example.webp"
           fill
@@ -17,15 +17,15 @@ const CardNews = () => {
           alt=""
         />
       </div>
-      <div className="w-full flex flex-col gap-[16px] justify-between">
+      <div className="w-full h-full flex flex-col gap-[16px] justify-between">
         <div className="flex flex-col gap-[16px]">
-          <HeadingH3 label="Lorem ipsum dolor sit amet consectetur. Habitasse sit non quisque volutpat netus." />
-          <p>
+          <HeadingH3 label="Lorem ipsum dolor sit amet consectetur. Habitasse sit." />
+          <p className="hidden lg:flex">
             Lorem ipsum dolor sit amet consectetur. Habitasse sit non quisque
             volutpat netus. Habitasse sit non.
           </p>
         </div>
-        <ButtonReadMore href="/" />
+        <ButtonReadMore />
       </div>
     </Link>
   );

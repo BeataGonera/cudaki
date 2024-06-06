@@ -1,11 +1,6 @@
-import Link from "next/link";
-
-const ButtonReadMore = ({ href }: { href: string }) => {
+const ButtonReadMore = () => {
   return (
-    <Link
-      className="text-primary-custom flex w-full justify-end gap-[8px]"
-      href={href}
-    >
+    <div className="text-primary-custom flex w-full justify-end gap-[8px]">
       <span className="font-bold text-[14px]">Czytaj dalej</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +14,7 @@ const ButtonReadMore = ({ href }: { href: string }) => {
           clipRule="evenodd"
         />
       </svg>
-    </Link>
+    </div>
   );
 };
 
