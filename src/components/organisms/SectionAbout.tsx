@@ -26,7 +26,9 @@ const SectionAbout = () => {
           zdolność, którą wszyscy naszym nieskromnym zdaniem posiadamy i bardzo
           głęboko w nią wierzymy. To empatia.
         </p>
-        <ButtonCTA label="Dowiedz się więcej" icon={false} />
+        <div className="w-full lg:w-[368px]">
+          <ButtonCTA label="Dowiedz się więcej" icon={false} />
+        </div>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ const ButtonCTA = ({ label, icon }: { label: string; icon: boolean }) => {
   return (
     <button
       type="button"
-      className={`${styles.container} text-white font-bold bg-primary-custom rounded-lg h-[52px] flex justify-center items-center gap-4 relative overflow-hidden w-full lg:w-[368px] z-10`}
+      className={`${styles.container} text-white font-bold bg-primary-custom rounded-lg h-[52px] flex justify-center items-center gap-4 relative overflow-hidden w-full  z-10`}
     >
       <div className="absolute top-0 left-0 w-full flex justify-center items-center h-full gap-4">
         {label}

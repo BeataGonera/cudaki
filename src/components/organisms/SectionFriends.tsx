@@ -28,7 +28,9 @@ const SectionFriends = () => {
           </div>
         </div>
       </div>
-      <ButtonCTA label="Więcej o partnerach" icon={false} />
+      <div className="w-full lg:w-[368px]">
+        <ButtonCTA label="Więcej o partnerach" icon={false} />
+      </div>
     </section>
   );
 };

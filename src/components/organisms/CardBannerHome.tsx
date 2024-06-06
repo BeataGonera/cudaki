@@ -18,7 +18,9 @@ const CardBannerHome = () => {
         <h1 className="text-h1-sm lg:text-h1">
           Lorem ipsum dolor sit amet consectetur.
         </h1>
-        <ButtonCTA label="CTA" icon={true} />
+        <div className="w-full lg:w-[368px]">
+          <ButtonCTA label="CTA" icon={true} />
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import { ThemeModeScript } from "flowbite-react";
 import Footer from "@/components/organisms/Footer";
+import Navigation from "@/components/organisms/Navigation";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <ThemeModeScript />
       </head>
       <body className={`${raleway.className}  bg-beige-bg`}>
+        <Navigation />
         {children}
         <Footer />
       </body>

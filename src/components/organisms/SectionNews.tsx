@@ -11,7 +11,9 @@ const SectionNews = () => {
         <CardNews />
         <CardNews />
       </div>
-      <ButtonCTA label={"Zobacz więcej"} icon={false} />
+      <div className="w-full lg:w-[368px]">
+        <ButtonCTA label={"Zobacz więcej"} icon={false} />
+      </div>
     </section>
   );
 };

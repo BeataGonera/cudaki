@@ -20,6 +20,28 @@
   }
 }
 
+@keyframes changeBorderColor {
+  0% {
+    border: 1px solid #583d9a;
+    color: #583d9a;
+  }
+  100% {
+    border: 1px solid #906ee2;
+    color: #ffffff;
+  }
+}
+
+@keyframes changeBorderColorReverse {
+  0% {
+    border: 1px solid #906ee2;
+    color: #ffffff;
+  }
+  100% {
+    border: 1px solid #583d9a;
+    color: #583d9a;
+  }
+}
+
 .container:hover .dot {
   animation-name: grow;
   animation-duration: 0.5s;
@@ -34,6 +56,36 @@
 
 .container:not(:hover) .dot {
   animation-name: shrink;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.containerOutlined:hover .dot {
+  animation-name: grow;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.containerOutlined:hover .dot {
+  animation-name: grow;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.containerOutlined:not(:hover) .dot {
+  animation-name: shrink;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.containerOutlined:hover {
+  animation-name: changeBorderColor;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.containerOutlined:not(:hover) {
+  animation-name: changeBorderColorReverse;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
