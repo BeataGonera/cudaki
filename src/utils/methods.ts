@@ -1,4 +1,4 @@
-import { DocumentCustomType } from "./types";
+import { DocumentCustomType, News } from "./types";
 import parse from "html-react-parser";
 
 export const getAllDocuments = async () => {
@@ -19,6 +19,28 @@ export const getAllDocuments = async () => {
       }
     );
     return documents;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export const getAllNews = async () => {
+  try {
+    const response = await fetch(
+      "http://cudakicms.local/wp-json/wp/v2/aktualnosci?acf_format=standard&_embed",
+      { next: { revalidate: 100 } }
+    );
+    const newsRes = await response.json();
+    const newsPosts: News[] = newsRes.map((newsRes: any) => {
+      return {
+        title: newsRes.title.rendered,
+        slug: newsRes.slug,
+        modified: newsRes.modified,
+        excerpt: newsRes.excerpt.rendered,
+        featuredImg: newsRes._embedded["wp:featuredmedia"]["0"].source_url,
+      } as News;
+    });
+    return newsPosts;
   } catch (error: any) {
     console.log(error);
   }
