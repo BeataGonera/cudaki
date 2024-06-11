@@ -17,3 +17,15 @@ export type News = {
   excerpt: string;
   featuredImg: string;
 };
+
+export type LinkMenu = {
+  label: string;
+  href: string;
+  ariaLabel: string;
+};
+
+export type BoardMember = {
+  name: string;
+  featuredImg: string;
+  description: string;
+};

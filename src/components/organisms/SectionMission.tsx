@@ -3,7 +3,7 @@ import HeadingH3 from "../atoms/HeadingH3";
 
 const SectionMission = () => {
   return (
-    <section className="w-full px-2 lg:px-24 2xl:px-128 flex flex-col gap-[32px] lg:gap-48">
+    <section className="w-full px-2 lg:px-24 2xl:px-128 flex flex-col gap-[32px] lg:gap-[48px]">
       <h1 className="text-h1-sm lg:text-h1">Nasza fundacja</h1>
       <div className="flex flex-col lg:flex-row gap-[16px] lg:gap-24 relative">
         <img

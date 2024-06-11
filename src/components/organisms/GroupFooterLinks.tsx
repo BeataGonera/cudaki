@@ -6,21 +6,21 @@ const GroupFooterLinks = () => {
       <div className="flex flex-col gap-4">
         <p className="text-[14px] font-bold text-white">O Fundacji</p>
         <Link
-          href="/misja"
+          href="/misja-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Misja Fundacji"
         >
           Misja fundacji
         </Link>
         <Link
-          href="/misja"
+          href="/wladze-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Władze Fundacji"
         >
           Władze fundacji
         </Link>
         <Link
-          href="/misja"
+          href="/dokumenty-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Dokumenty Fundacji"
         >
@@ -31,21 +31,21 @@ const GroupFooterLinks = () => {
       <div className="flex flex-col gap-4">
         <p className="text-[14px] font-bold text-white">Przyjaciele cudaka</p>
         <Link
-          href="/misja"
+          href="/misja-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Misja Fundacji"
         >
           Lorem ipsum
         </Link>
         <Link
-          href="/misja"
+          href="/misja-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Władze Fundacji"
         >
           Lorem ipsum
         </Link>
         <Link
-          href="/misja"
+          href="/misja-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Dokumenty Fundacji"
         >
@@ -56,21 +56,21 @@ const GroupFooterLinks = () => {
       <div className="flex flex-col gap-4">
         <p className="text-[14px] font-bold text-white">Aktualności</p>
         <Link
-          href="/misja"
+          href="/misja-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Misja Fundacji"
         >
           Lorem ipsum{" "}
         </Link>
         <Link
-          href="/misja"
+          href="/misja-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Władze Fundacji"
         >
           Lorem ipsum{" "}
         </Link>
         <Link
-          href="/misja"
+          href="/misja-fundacji"
           className="text-[#C8B6F6] text-[12px] font-bold"
           aria-label="Przejdź do podstrony Dokumenty Fundacji"
         >

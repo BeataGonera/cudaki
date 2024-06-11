@@ -2,8 +2,27 @@ import Link from "next/link";
 import LogoSmall from "../atoms/LogoSmall";
 import ButtonCTA from "../atoms/buttonCTA";
 import ButtonOutlined from "../atoms/ButtonOutlined";
+import DropDownMenu from "../molecules/DropdownMenu";
+import { LinkMenu } from "@/utils/types";
 
 const Navigation = () => {
+  const linksAbout: LinkMenu[] = [
+    {
+      label: "Misja",
+      href: "/misja-fundacji",
+      ariaLabel: "Przejdź do podstrony - Misja Fundacji",
+    },
+    {
+      label: "Władze fundacji",
+      href: "/wladze-fundacji",
+      ariaLabel: "Przejdź do podstrony - Władze Fundacji",
+    },
+    {
+      label: "Dokumenty fundacji",
+      href: "/dokumenty-fundacji",
+      ariaLabel: "Przejdź do podstrony - Dokumenty Fundacji",
+    },
+  ];
   return (
     <nav className="w-full h-[55px] mt-4 lg:mt-24">
       <div className="hidden lg:flex px-2 lg:px-24 2xl:px-128 justify-between items-center">
@@ -16,9 +35,7 @@ const Navigation = () => {
             >
               Aktualności
             </Link>
-            <Link href="/misja" aria-label="Przejdź do podtrony Misja Fundacji">
-              O Fundacji
-            </Link>{" "}
+            <DropDownMenu label="O Fundacji" links={linksAbout} />
             <Link
               href="/partnerzy"
               aria-label="Przejdź do podtrony Nasi Partnerzy"

@@ -2,7 +2,7 @@ import SectionMission from "@/components/organisms/SectionMission";
 
 const MissionPage = () => {
   return (
-    <main className="flex min-h-screen flex-col gap-24 lg:gap-24 items-center justify-between pt-12 lg:pt-48">
+    <main className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem]">
       <SectionMission />
     </main>
   );

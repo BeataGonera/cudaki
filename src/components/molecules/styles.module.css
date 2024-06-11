@@ -1,0 +1,43 @@
+@keyframes showMenu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hideMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.open {
+  position: absolute;
+  bottom: -116px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  white-space: nowrap;
+  opacity: 1;
+  animation-name: showMenu;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.close {
+  position: absolute;
+  bottom: -116px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  white-space: nowrap;
+  opacity: 0;
+  animation-name: hideMenu;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}

@@ -1,6 +1,4 @@
 import Image from "next/image";
-import HeadingH2 from "../atoms/HeadingH2";
-import { CheckBox } from "../atoms/Checkbox";
 import FormContact from "../molecules/FormContact";
 
 const SectionContact = () => {

@@ -1,4 +1,4 @@
-import { DocumentCustomType, News } from "./types";
+import { BoardMember, DocumentCustomType, News } from "./types";
 import parse from "html-react-parser";
 
 export const getAllDocuments = async () => {
@@ -32,15 +32,62 @@ export const getAllNews = async () => {
     );
     const newsRes = await response.json();
     const newsPosts: News[] = newsRes.map((newsRes: any) => {
+      const parsedExcerpt = parse(newsRes.excerpt.rendered) as any;
       return {
         title: newsRes.title.rendered,
         slug: newsRes.slug,
         modified: newsRes.modified,
-        excerpt: newsRes.excerpt.rendered,
+        excerpt: parsedExcerpt,
         featuredImg: newsRes._embedded["wp:featuredmedia"]["0"].source_url,
       } as News;
     });
     return newsPosts;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export const getAllBoardMembers = async () => {
+  try {
+    const response = await fetch(
+      "http://cudakicms.local/wp-json/wp/v2/zarzad?acf_format=standard&_embed",
+      { next: { revalidate: 100 } }
+    );
+    const boardMembersRes = await response.json();
+    const boardMembers: BoardMember[] = boardMembersRes.map(
+      (boardMemberRes: any) => {
+        return {
+          name: boardMemberRes.title.rendered,
+          featuredImg:
+            boardMemberRes._embedded["wp:featuredmedia"]["0"].source_url,
+          description: boardMemberRes.content.rendered,
+        } as BoardMember;
+      }
+    );
+    return boardMembers;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export const getAllCouncilMembers = async () => {
+  try {
+    const response = await fetch(
+      "http://cudakicms.local/wp-json/wp/v2/rada-fundacji?acf_format=standard&_embed",
+      { next: { revalidate: 100 } }
+    );
+    const boardMembersRes = await response.json();
+    const boardMembers: BoardMember[] = boardMembersRes.map(
+      (boardMemberRes: any) => {
+        return {
+          name: boardMemberRes.title.rendered,
+          featuredImg:
+            boardMemberRes._embedded["wp:featuredmedia"]["0"].source_url,
+          description: boardMemberRes.content.rendered,
+        } as BoardMember;
+      }
+    );
+    return boardMembers;
   } catch (error: any) {
     console.log(error);
   }
