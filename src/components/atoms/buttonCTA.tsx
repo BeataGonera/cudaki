@@ -1,13 +1,23 @@
 import styles from "@/app/styles.module.css";
 
-const ButtonCTA = ({ label, icon }: { label: string; icon: boolean }) => {
+const ButtonCTA = ({
+  label,
+  icon,
+  submit,
+  pending,
+}: {
+  label: string;
+  icon: boolean;
+  submit?: boolean;
+  pending?: boolean;
+}) => {
   return (
     <button
-      type="button"
+      type={submit ? `submit` : "button"}
       className={`${styles.container} text-white font-bold bg-primary-custom rounded-lg h-[52px] flex justify-center items-center gap-4 relative overflow-hidden w-full  z-10`}
     >
       <div className="absolute top-0 left-0 w-full flex justify-center items-center h-full gap-4">
-        {label}
+        {!pending ? label : "Wysyłam ..."}
         {icon ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"

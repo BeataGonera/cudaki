@@ -46,6 +46,7 @@ const config: Config = {
       },
     },
     colors: {
+      "error-custom": "#EF2E36",
       "beige-bg": "#F2F0E5",
       "primary-custom": "#583D9A",
       "primary-hover": "#906EE2",

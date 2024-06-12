@@ -6,7 +6,7 @@ export function CheckBox() {
   return (
     <div className="flex max-w-md flex-col gap-4" id="checkbox">
       <div className="flex items-start gap-2">
-        <Checkbox id="accept" defaultChecked />
+        <Checkbox id="accept" defaultChecked required />
         <Label htmlFor="accept" className="flex flex-col">
           <span className="font-bold">
             Zapoznałem się z{" "}

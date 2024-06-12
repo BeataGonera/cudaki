@@ -22,7 +22,7 @@ const SectionContact = () => {
               src="/contact.webp"
               fill
               className="w-full h-full object-cover rounded-[16px]"
-              alt="Kobieta przed laptopem"
+              alt="Kobieta siedząca przed laptopem"
             />
           </div>
         </div>
