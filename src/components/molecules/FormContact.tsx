@@ -118,6 +118,7 @@ const FormContact = () => {
             name="Imię"
             type="text"
             placeholder="Imię"
+            maxLength={40}
             className={
               error === Error.wrongName
                 ? "text-[12px] w-full bg-beige-bg h-[44px] rounded-[8px] border-2 border-error-custom"
@@ -148,6 +149,7 @@ const FormContact = () => {
             name="Nazwisko"
             type="text"
             placeholder="Nazwisko"
+            maxLength={40}
             className={
               error === Error.wrongSurname
                 ? "text-[12px] w-full bg-beige-bg h-[44px] rounded-[8px] border-2 border-error-custom"
@@ -179,6 +181,7 @@ const FormContact = () => {
           name="Email"
           type="email"
           placeholder="Twoj.email@gmail.com"
+          maxLength={60}
           className={
             error === Error.wrongEmail
               ? "text-[12px] w-full bg-beige-bg h-[44px] rounded-[8px] border-2 border-error-custom"
@@ -215,6 +218,7 @@ const FormContact = () => {
               : "text-[12px] w-full bg-beige-bg h-[177px] rounded-[8px]"
           }
           rows={4}
+          maxLength={800}
           onChange={(e) => updateVisitorData({ message: e.target.value })}
         />
         <p
