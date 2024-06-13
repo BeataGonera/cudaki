@@ -26,7 +26,7 @@ const CardNews = ({ newsObject }: { newsObject: News }) => {
           <div className="flex lg:hidden w-full">
             <HeadingH3 label={newsObject.title.slice(0, 50)} />
           </div>
-          <p className="hidden lg:flex">{newsObject.excerpt}</p>
+          <div className="hidden lg:flex">{newsObject.excerpt}</div>
         </div>
         <ButtonReadMore color={"purple"} />
       </div>
