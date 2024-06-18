@@ -73,7 +73,7 @@ export const getAllBoardMembers = async () => {
 export const getAllCouncilMembers = async () => {
   try {
     const response = await fetch(
-      "http://cudakicms.local/wp-json/wp/v2/rada-fundacji?acf_format=standard&_embed",
+      "https://ijdb.com.pl/wp-json/wp/v2/rada-fundacji?acf_format=standard&_embed",
       { next: { revalidate: 100 } }
     );
     const boardMembersRes = await response.json();
