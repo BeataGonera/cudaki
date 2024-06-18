@@ -27,7 +27,11 @@ const SectionAbout = () => {
           głęboko w nią wierzymy. To empatia.
         </p>
         <div className="w-full lg:w-[368px]">
-          <ButtonCTA label="Dowiedz się więcej" icon={false} />
+          <ButtonCTA
+            label="Dowiedz się więcej"
+            icon={false}
+            href={"/misja-fundacji"}
+          />
         </div>
       </div>
     </section>

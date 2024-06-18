@@ -17,7 +17,7 @@ const SectionNews = async () => {
         </div>
       ) : null}
       <div className="w-full lg:w-[368px]">
-        <ButtonCTA label={"Zobacz więcej"} icon={false} />
+        <ButtonCTA label={"Zobacz więcej"} icon={false} href={"/aktualnosci"} />
       </div>
     </section>
   );

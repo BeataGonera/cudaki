@@ -40,10 +40,6 @@ const FormContact = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(error);
-  }, [error]);
-
   const handleSubmit = (event: any) => {
     event.preventDefault();
     setPending(false);

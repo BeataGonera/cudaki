@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 export const getAllDocuments = async () => {
   try {
     const response = await fetch(
-      "http://cudakicms.local/wp-json/wp/v2/dokumenty?acf_format=standard",
+      "https://ijdb.com.pl/wp-json/wp/v2/dokumenty?acf_format=standard",
       { next: { revalidate: 100 } }
     );
     const documentsRes = await response.json();
@@ -27,7 +27,7 @@ export const getAllDocuments = async () => {
 export const getAllNews = async () => {
   try {
     const response = await fetch(
-      "http://cudakicms.local/wp-json/wp/v2/aktualnosci?acf_format=standard&_embed",
+      "https://ijdb.com.pl/wp-json/wp/v2/aktualnosci?acf_format=standard&_embed",
       { next: { revalidate: 100 } }
     );
     const newsRes = await response.json();
@@ -50,7 +50,7 @@ export const getAllNews = async () => {
 export const getAllBoardMembers = async () => {
   try {
     const response = await fetch(
-      "http://cudakicms.local/wp-json/wp/v2/zarzad?acf_format=standard&_embed",
+      "https://ijdb.com.pl/wp-json/wp/v2/zarzad?acf_format=standard&_embed",
       { next: { revalidate: 100 } }
     );
     const boardMembersRes = await response.json();

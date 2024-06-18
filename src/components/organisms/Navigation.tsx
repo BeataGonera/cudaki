@@ -31,18 +31,18 @@ const Navigation = () => {
           <div className="flex gap-[14px] font-bold items-center">
             <Link
               href="/aktualnosci"
-              aria-label="Przejdź do podtrony aktualności"
+              aria-label="Przejdź do podstrony aktualności"
             >
               Aktualności
             </Link>
             <DropDownMenu label="O Fundacji" links={linksAbout} />
             <Link
               href="/partnerzy"
-              aria-label="Przejdź do podtrony Nasi Partnerzy"
+              aria-label="Przejdź do podstrony Nasi Partnerzy"
             >
               Nasi partnerzy
             </Link>{" "}
-            <Link href="/kontakt" aria-label="Przejdź do podtrony Kontakt">
+            <Link href="/kontakt" aria-label="Przejdź do podstrony Kontakt">
               Kontakt
             </Link>
           </div>

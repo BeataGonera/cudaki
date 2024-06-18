@@ -23,7 +23,7 @@ export function CarouselHome() {
             base: "hidden",
           },
           scrollContainer: {
-            snap: "snap-y",
+            base: "flex h-full snap-none overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg cursor-pointer",
           },
         }}
       >
