@@ -54,7 +54,7 @@ export const getAllNews = async () => {
         author: newsRes._embedded.author[0].name,
       } as News;
     });
-    return newsPosts;
+    return newsPosts as News[];
   } catch (error: any) {
     console.log(error);
   }

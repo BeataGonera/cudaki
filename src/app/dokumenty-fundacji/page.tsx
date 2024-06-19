@@ -1,6 +1,21 @@
 import SectionDocuments from "@/components/organisms/SectionDocuments";
 import Image from "next/image";
 
+export async function generateMetadata() {
+  return {
+    title: `Dokumenty fundacji - Fundacja Cudaki`,
+    description: `Dokumenty fundacji - Fundacja Cudaki`,
+    openGraph: {
+      title: `Dokumenty fundacji - Fundacja Cudaki`,
+      locale: "pl_PL",
+      type: "website",
+      description: `Dokumenty fundacji - Fundacja Cudaki`,
+      url: `https://cudaki.vercel.app/dokumenty-fundacji`,
+      siteName: "Cudaki",
+    },
+  };
+}
+
 const DocumentsPage = () => {
   return (
     <main className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">

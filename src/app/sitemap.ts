@@ -13,19 +13,49 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
   return [
     {
-      url: "https://forbis.vercel.app/",
+      url: "https://cudaki.vercel.app/",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: "https://forbis.vercel.app/realizacje",
+      url: "https://cudaki.vercel.app/aktualnosci",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://www.interhandler.pl/fit-out",
+      url: "https://cudaki.vercel.app/partnerzy",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: "https://cudaki.vercel.app/kontakt",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: "https://cudaki.vercel.app/misja-fundacji",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: "https://cudaki.vercel.app/partnerzy",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: "https://cudaki.vercel.app/wladze-fundacji",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: "https://cudaki.vercel.app/dokumenty-fundacji",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.5,

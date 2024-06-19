@@ -4,6 +4,21 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import SectionSuggestedArticles from "@/components/organisms/SectionSuggestedArticles/SectionSuggestedArticles";
 
+export async function generateMetadata() {
+  return {
+    title: `Fundacja Cudaki - Aktualności`,
+    description: `Fundacja Cudaki - Aktualności`,
+    openGraph: {
+      title: `Fundacja Cudaki - Aktualności`,
+      locale: "pl_PL",
+      type: "website",
+      description: `Fundacja Cudaki - Aktualności`,
+      url: `https://cudaki.vercel.app/aktualnosci`,
+      siteName: "Cudaki",
+    },
+  };
+}
+
 const PostPage = async ({ params }: { params: { postSlug: string } }) => {
   const post = await getPostBySlug(params.postSlug);
 
