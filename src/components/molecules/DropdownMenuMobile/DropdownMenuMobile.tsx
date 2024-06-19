@@ -57,7 +57,7 @@ const DropDownMenuMobile = ({
         )}
       </div>
       {links ? (
-        <div className={` flex flex-col  ${open ? styles.open : styles.close}`}>
+        <div className={` ${open ? styles.open : styles.close}`}>
           <div className="pt-[24px]">
             {links.map((link: LinkMenu, index: number) => {
               return (
