@@ -23,7 +23,7 @@ export default function RootLayout({
       <head>
         <ThemeModeScript />
       </head>
-      <body className={`${raleway.className}  bg-beige-bg`}>
+      <body className={`${raleway.className} bg-beige-bg`}>
         <Navigation />
         {children}
         <Footer />

@@ -2,7 +2,6 @@
 
 import { LinkMenu } from "@/utils/types";
 import Link from "next/link";
-import { useState } from "react";
 import styles from "./styles.module.css";
 import { useIsMenuDrawerOpenStore } from "@/state/isMenuDrawerOpen";
 import { useIsDropdownMenuMobileOpenStore } from "@/state/isDropdownMenuMobileOpen";
@@ -60,7 +59,9 @@ const DropDownMenuMobile = ({
       </div>
       {links ? (
         <div
-          className={`${isDropdownMenuMobileOpen ? styles.open : styles.close}`}
+          className={`${
+            !isDropdownMenuMobileOpen ? styles.close : styles.open
+          }`}
         >
           <div className="pt-[24px]">
             {links.map((link: LinkMenu, index: number) => {
