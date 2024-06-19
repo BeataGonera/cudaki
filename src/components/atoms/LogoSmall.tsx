@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const LogoSmall = () => {
   return (
-    <Link href="/" className="relative w-[107px] h-[51px] z-50 block">
+    <Link href="/" className="relative w-[107px] h-[51px] z-20 block">
       <Image
         src="/logosmall.webp"
         alt="Logo fundacji Cudak"

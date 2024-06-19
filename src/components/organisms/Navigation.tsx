@@ -29,7 +29,7 @@ const linksAbout: LinkMenu[] = [
 ];
 
 const Navigation = () => {
-  const { isMenuDrawerOpen, setIsMenuDrawerOpen } = useIsMenuDrawerOpenStore();
+  const { setIsMenuDrawerOpen } = useIsMenuDrawerOpenStore();
   return (
     <nav className="w-full h-[55px] mt-4 lg:mt-24">
       <div className="hidden lg:flex px-2 lg:px-24 2xl:px-128 justify-between items-center">
@@ -67,7 +67,7 @@ const Navigation = () => {
           <IconMenu />
         </button>
       </div>
-      <DrawerMenu />
+      <DrawerMenu aboutLinks={linksAbout} />
     </nav>
   );
 };

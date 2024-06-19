@@ -1,0 +1,77 @@
+"use client";
+
+import { LinkMenu } from "@/utils/types";
+import Link from "next/link";
+import { useState } from "react";
+import styles from "./styles.module.css";
+
+const DropDownMenuMobile = ({
+  label,
+  links,
+}: {
+  label: string;
+  links: LinkMenu[];
+}) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="cursor-pointer">
+      <div
+        className="flex gap-[8px] items-center justify-between border-white border-b-[1px]"
+        onClick={() => setOpen(!open)}
+      >
+        {label}{" "}
+        {!open ? (
+          <div className="text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        ) : (
+          <div className="text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="size-5"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.47 6.47a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 1 1-1.06 1.06L10 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06l4.25-4.25Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        )}
+      </div>
+      {links ? (
+        <div className={` flex flex-col  ${open ? styles.open : styles.close}`}>
+          <div className="pt-[24px]">
+            {links.map((link: LinkMenu, index: number) => {
+              return (
+                <Link
+                  href={link.href}
+                  key={index}
+                  aria-label={link.ariaLabel}
+                  className="text-[18px] h-[42px] flex items-center"
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+};
+
+export default DropDownMenuMobile;
