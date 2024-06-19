@@ -4,6 +4,7 @@ import { LinkMenu } from "@/utils/types";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "./styles.module.css";
+import { useIsMenuDrawerOpenStore } from "@/state/isMenuDrawerOpen";
 
 const DropDownMenuMobile = ({
   label,
@@ -13,6 +14,7 @@ const DropDownMenuMobile = ({
   links: LinkMenu[];
 }) => {
   const [open, setOpen] = useState(false);
+  const { setIsMenuDrawerOpen } = useIsMenuDrawerOpenStore();
   return (
     <div className="cursor-pointer">
       <div
@@ -64,6 +66,7 @@ const DropDownMenuMobile = ({
                   key={index}
                   aria-label={link.ariaLabel}
                   className="text-[18px] h-[42px] flex items-center"
+                  onClick={() => setIsMenuDrawerOpen(false)}
                 >
                   {link.label}
                 </Link>
