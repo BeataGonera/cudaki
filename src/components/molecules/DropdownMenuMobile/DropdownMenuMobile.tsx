@@ -24,7 +24,7 @@ const DropDownMenuMobile = ({
         onClick={() => setIsDropdownMenuMobileOpen(!isDropdownMenuMobileOpen)}
       >
         {label}{" "}
-        {!open ? (
+        {!isDropdownMenuMobileOpen ? (
           <div className="text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"

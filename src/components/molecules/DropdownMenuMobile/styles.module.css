@@ -27,9 +27,9 @@
 
 .close {
   height: 0px;
-  /* animation-name: close;
+  animation-name: close;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
-  animation-play-state: paused; */
+  /* animation-play-state: paused; */
   overflow: hidden;
 }
