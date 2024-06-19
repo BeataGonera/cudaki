@@ -14,8 +14,18 @@ export type News = {
   title: string;
   slug: string;
   modified: string;
+  dateObject: {
+    day: number;
+    month: string;
+    year: number;
+    hours: number;
+    minutes: number;
+  };
   excerpt: string;
   featuredImg: string;
+  author: string;
+  tags?: string[];
+  content?: any;
 };
 
 export type LinkMenu = {

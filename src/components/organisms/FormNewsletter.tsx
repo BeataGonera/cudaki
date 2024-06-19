@@ -51,6 +51,11 @@ const FormNewsletter = () => {
                 onChange={(e: any) => setEmail(e.target.value)}
               ></input>
             </div>
+            <div className="hidden lg:block">
+              <ButtonCTABlue label="Subskrybuj" submit={true} />
+            </div>
+          </div>
+          <div className="block lg:hidden">
             <ButtonCTABlue label="Subskrybuj" submit={true} />
           </div>
           {error ? <div className="text-error-custom">{error}</div> : null}

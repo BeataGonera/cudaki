@@ -4,7 +4,7 @@ import Image from "next/image";
 const DocumentsPage = () => {
   return (
     <main className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">
-      <div className="flex flex-col lg:flex-row gap-[24px] justify-between w-full px-2 lg:px-24 2xl:px-128">
+      <div className="flex flex-col lg:flex-row gap-[24px] justify-between w-full ">
         <div className="w-full lg:w-1/2 flex flex-col gap-[24px] max-w-[560px]">
           <h1 className="text-[24px] lg:text-[80px] font-bold ">
             Dokumenty fundacji

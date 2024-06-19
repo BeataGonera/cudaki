@@ -100,8 +100,8 @@ const FormContact = () => {
       />
       <input type="hidden" name="replyto" value={visitorData.email} />
 
-      <div className="flex gap-[24px]">
-        <div className="w-1/2">
+      <div className="flex flex-col lg:flex-row gap-[16px] lg:gap-[24px]">
+        <div className="w-full lg:w-1/2 ">
           <div className="mb-2 block">
             <Label
               htmlFor="name"
@@ -132,7 +132,7 @@ const FormContact = () => {
             Wpisz imię
           </p>
         </div>
-        <div className="w-1/2">
+        <div className="w-full lg:w-1/2">
           <div className="mb-2 block">
             <Label
               htmlFor="surname"

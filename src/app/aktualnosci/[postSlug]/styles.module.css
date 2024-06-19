@@ -1,0 +1,27 @@
+.content p {
+  font-size: 16px;
+  line-height: 20.8px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.content img {
+  border-radius: 8px;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    max-width: 560px;
+  }
+
+  .content img {
+    aspect-ratio: 2;
+  }
+}

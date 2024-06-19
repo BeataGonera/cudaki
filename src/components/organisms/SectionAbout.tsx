@@ -8,7 +8,7 @@ const SectionAbout = () => {
       <div className="w-full relative aspect-square col-start-1 col-end-2 lg:col-start-2 lg:col-end-3">
         <img
           src="/Vector.webp"
-          className="absolute top-[-20%] left-[-20%] w-[120%] h-[120%]"
+          className="hidden lg:block absolute top-[-20%] left-[-20%] w-[120%] h-[120%]"
         />
         <Image
           src="/about.webp"

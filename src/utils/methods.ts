@@ -24,6 +24,17 @@ export const getAllDocuments = async () => {
   }
 };
 
+const formatDate = (date: string) => {
+  const d = new Date(date);
+  const day = d.getUTCDate();
+  const month = d.toLocaleString("pl-PL", { month: "long" });
+  const year = d.getFullYear();
+  const hours = d.getHours();
+  const minutes = d.getMinutes();
+
+  return { day: day, month: month, year: year, hours: hours, minutes: minutes };
+};
+
 export const getAllNews = async () => {
   try {
     const response = await fetch(
@@ -37,11 +48,78 @@ export const getAllNews = async () => {
         title: newsRes.title.rendered,
         slug: newsRes.slug,
         modified: newsRes.modified,
+        dateObject: formatDate(newsRes.modified),
         excerpt: parsedExcerpt,
         featuredImg: newsRes._embedded["wp:featuredmedia"]["0"].source_url,
+        author: newsRes._embedded.author[0].name,
       } as News;
     });
     return newsPosts;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export const getLatestNews = async () => {
+  try {
+    const response = await fetch(
+      "https://ijdb.com.pl/wp-json/wp/v2/aktualnosci?acf_format=standard&_embed&per_page=6&page=1",
+      { next: { revalidate: 100 } }
+    );
+    const newsRes = await response.json();
+    const newsPosts: News[] = newsRes.map((newsRes: any) => {
+      const parsedExcerpt = parse(newsRes.excerpt.rendered) as any;
+      return {
+        title: newsRes.title.rendered,
+        slug: newsRes.slug,
+        modified: newsRes.modified,
+        dateObject: formatDate(newsRes.modified),
+        excerpt: parsedExcerpt,
+        featuredImg: newsRes._embedded["wp:featuredmedia"]["0"].source_url,
+        author: newsRes._embedded.author[0].name,
+      } as News;
+    });
+    return newsPosts;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+const createTagsArray = (array: []) => {
+  const tagsArray = array.map((tagRes: any) => {
+    return tagRes.name;
+  });
+  return tagsArray;
+};
+
+export const getPostBySlug = async (slug: string) => {
+  try {
+    const response = await fetch(
+      `https://ijdb.com.pl/wp-json/wp/v2/aktualnosci?slug=${slug}&_embed&format=standard&acf_format=standard`,
+      { next: { revalidate: 100 } }
+    );
+    const postsRes = await response.json();
+    const tagsRes = () => {
+      if (postsRes[0]._embedded["wp:term"]) {
+        return postsRes[0]._embedded["wp:term"]["0"];
+      } else {
+        return [""];
+      }
+    };
+
+    const parsedContent = parse(postsRes[0].content.rendered);
+    const post: News = {
+      title: postsRes[0].title.rendered,
+      slug: postsRes[0].slug,
+      modified: postsRes[0].modified,
+      dateObject: formatDate(postsRes[0].modified),
+      excerpt: postsRes[0].excerpt.rendered,
+      featuredImg: postsRes[0]._embedded["wp:featuredmedia"]["0"].source_url,
+      author: postsRes[0]._embedded.author[0].name,
+      tags: createTagsArray(tagsRes()),
+      content: parsedContent,
+    };
+    return post;
   } catch (error: any) {
     console.log(error);
   }

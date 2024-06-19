@@ -7,7 +7,7 @@ import { News } from "@/utils/types";
 const CardNews = ({ newsObject }: { newsObject: News }) => {
   return (
     <Link
-      href="/"
+      href={`/aktualnosci/${newsObject.slug}`}
       className="w-full flex lg:flex-col rounded-lg bg-[#E0DAE1] p-[16px] h-[193px] lg:h-[463px] gap-[16px] group"
     >
       <div className="w-full h-full lg:h-[191px] lg:min-h-[191px] relative inline-block overflow-hidden">

@@ -22,7 +22,7 @@ const CardNewsWide = ({ newsObject }: { newsObject: News }) => {
           <h5 className="text-white text-[24px] font-bold lg:max-w-[657px] leading-[28.18px]">
             {newsObject.title}
           </h5>
-          <p className="text-white hidden lg:flex">{newsObject.excerpt}</p>
+          <div className="text-white hidden lg:flex">{newsObject.excerpt}</div>
         </div>
         <div className="w-full lg:w-[20%] lg:h-full flex items-end justify-end">
           <span className="text-white">
