@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./styles.module.css";
 import { useIsMenuDrawerOpenStore } from "@/state/isMenuDrawerOpen";
+import { useIsDropdownMenuMobileOpenStore } from "@/state/isDropdownMenuMobileOpen";
 
 const DropDownMenuMobile = ({
   label,
@@ -13,13 +14,14 @@ const DropDownMenuMobile = ({
   label: string;
   links: LinkMenu[];
 }) => {
-  const [open, setOpen] = useState(false);
+  const { setIsDropdownMenuMobileOpen, isDropdownMenuMobileOpen } =
+    useIsDropdownMenuMobileOpenStore();
   const { setIsMenuDrawerOpen } = useIsMenuDrawerOpenStore();
   return (
     <div className="cursor-pointer">
       <div
         className="flex gap-[8px] items-center justify-between border-white border-b-[1px]"
-        onClick={() => setOpen(!open)}
+        onClick={() => setIsDropdownMenuMobileOpen(!isDropdownMenuMobileOpen)}
       >
         {label}{" "}
         {!open ? (
@@ -57,7 +59,9 @@ const DropDownMenuMobile = ({
         )}
       </div>
       {links ? (
-        <div className={` ${open ? styles.open : styles.close}`}>
+        <div
+          className={`${isDropdownMenuMobileOpen ? styles.open : styles.close}`}
+        >
           <div className="pt-[24px]">
             {links.map((link: LinkMenu, index: number) => {
               return (

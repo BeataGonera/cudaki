@@ -17,17 +17,19 @@
 }
 
 .open {
-  height: fit-content;
   animation-name: open;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .close {
   height: 0px;
-  animation-name: close;
+  /* animation-name: close;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  animation-play-state: paused; */
   overflow: hidden;
 }
