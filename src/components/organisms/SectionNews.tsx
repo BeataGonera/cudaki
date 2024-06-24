@@ -1,17 +1,17 @@
-import { getAllNews } from "@/utils/methods";
+import { getAllNews, getLatestNews } from "@/utils/methods";
 import HeadingH2 from "../atoms/HeadingH2";
 import ButtonCTA from "../atoms/buttonCTA";
 import CardNews from "../molecules/CardNews";
 import { News } from "@/utils/types";
 
 const SectionNews = async () => {
-  const news = await getAllNews();
+  const news = await getLatestNews();
   return (
     <section className="w-full flex flex-col items-center gap-[32px] px-2 lg:px-24 2xl:px-128">
       <HeadingH2 label="Aktualności" />
       {news ? (
         <div className="w-full flex flex-col lg:flex-row gap-[16px] ">
-          {news.map((newsObject: News, index: number) => (
+          {news.slice(0, 3).map((newsObject: News, index: number) => (
             <CardNews key={index} newsObject={newsObject} />
           ))}
         </div>

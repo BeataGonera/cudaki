@@ -7,12 +7,14 @@ const ButtonCTA = ({
   submit,
   pending,
   href,
+  targetBlank,
 }: {
   label: string;
   icon: boolean;
   submit?: boolean;
   pending?: boolean;
   href?: string;
+  targetBlank?: boolean;
 }) => {
   return (
     <>
@@ -20,6 +22,7 @@ const ButtonCTA = ({
         <Link
           href={href}
           className={`${styles.container} text-white font-bold bg-primary-custom rounded-lg h-[52px] flex justify-center items-center gap-4 relative overflow-hidden w-full  z-10`}
+          target={targetBlank ? "_blank" : "_self"}
         >
           <div className="absolute top-0 left-0 w-full flex justify-center items-center h-full gap-4">
             {!pending ? label : "Wysyłam ..."}

@@ -21,7 +21,12 @@ const CardPartner = ({ partner }: { partner: Partner }) => {
         <HeadingH2 label={partner.name} />
         <p className="max-w-[471px]">{partner.description}</p>
         <div className="w-full max-w-[368px]">
-          <ButtonCTA label="Czytaj więcej" icon={false} />
+          <ButtonCTA
+            label="Czytaj więcej"
+            icon={false}
+            href={partner.link}
+            targetBlank={true}
+          />
         </div>
       </div>
     </article>

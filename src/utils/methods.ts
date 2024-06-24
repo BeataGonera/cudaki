@@ -1,4 +1,4 @@
-import { BoardMember, DocumentCustomType, News } from "./types";
+import { BoardMember, DocumentCustomType, News, Partner } from "./types";
 import parse from "html-react-parser";
 
 export const getAllDocuments = async () => {
@@ -166,6 +166,28 @@ export const getAllCouncilMembers = async () => {
       }
     );
     return boardMembers;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export const getPartners = async () => {
+  try {
+    const response = await fetch(
+      "https://ijdb.com.pl/wp-json/wp/v2/partner?acf_format=standard&_embed",
+      { next: { revalidate: 100 } }
+    );
+    const partnersRes = await response.json();
+    const partners: Partner[] = partnersRes.map((partnersRes: any) => {
+      return {
+        name: partnersRes.acf.nazwa,
+        slug: partnersRes.slug,
+        img: partnersRes._embedded["wp:featuredmedia"]["0"].source_url,
+        link: partnersRes.acf.link,
+        description: partnersRes.acf.description,
+      } as Partner;
+    });
+    return partners as Partner[];
   } catch (error: any) {
     console.log(error);
   }

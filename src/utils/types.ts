@@ -2,6 +2,8 @@ export type Partner = {
   name: string;
   description: string;
   img: string;
+  slug: string;
+  link: string;
 };
 
 export type DocumentCustomType = {
