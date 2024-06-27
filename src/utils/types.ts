@@ -41,3 +41,21 @@ export type BoardMember = {
   featuredImg: string;
   description: string;
 };
+
+export type Banner = {
+  img: string;
+  text: string;
+  tag: string;
+  cta: {
+    label: string;
+    link: string;
+  };
+};
+
+export type HomeDetails = {
+  bannerCarousel: Banner[];
+  aboutSection: {
+    img: string;
+    text: string;
+  };
+};

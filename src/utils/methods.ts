@@ -1,4 +1,11 @@
-import { BoardMember, DocumentCustomType, News, Partner } from "./types";
+import {
+  Banner,
+  BoardMember,
+  DocumentCustomType,
+  HomeDetails,
+  News,
+  Partner,
+} from "./types";
 import parse from "html-react-parser";
 
 export const getAllDocuments = async () => {
@@ -184,10 +191,49 @@ export const getPartners = async () => {
         slug: partnersRes.slug,
         img: partnersRes._embedded["wp:featuredmedia"]["0"].source_url,
         link: partnersRes.acf.link,
-        description: partnersRes.acf.description,
+        description: partnersRes.acf.opis,
       } as Partner;
     });
     return partners as Partner[];
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+const bannersObjectIntoArray = (bannersObject: any) => {
+  const bannersToMap = Object.values(bannersObject).filter(
+    (banner: any) => banner.tekst != ""
+  );
+
+  const mappedBanners = bannersToMap.map((bannerToMap: any) => {
+    return {
+      img: bannerToMap.zdjecie.url,
+      text: bannerToMap.tekst,
+      tag: bannerToMap.tag,
+      cta: {
+        label: bannerToMap.cta.label,
+        link: bannerToMap.cta.link,
+      },
+    } as Banner;
+  });
+  return mappedBanners;
+};
+
+export const getHomePageDetails = async () => {
+  try {
+    const response = await fetch(
+      "https://ijdb.com.pl/wp-json/wp/v2/pages?slug=strona-glowna&acf_format=standard&_embed",
+      { next: { revalidate: 100 } }
+    );
+    const detailsRes = await response.json();
+    const homePageDetails: HomeDetails = {
+      bannerCarousel: bannersObjectIntoArray(detailsRes[0].acf.banner),
+      aboutSection: {
+        img: detailsRes[0].acf.nasza_fundacja.zdjecie,
+        text: detailsRes[0].acf.nasza_fundacja.tekst,
+      },
+    };
+    return homePageDetails;
   } catch (error: any) {
     console.log(error);
   }

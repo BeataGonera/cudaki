@@ -3,6 +3,7 @@ import Link from "next/link";
 import HeadingH3 from "../atoms/HeadingH3";
 import ButtonReadMore from "../atoms/ButtonReadMore";
 import { News } from "@/utils/types";
+import styles from "./styles.module.css";
 
 const CardNews = ({ newsObject }: { newsObject: News }) => {
   return (
@@ -26,7 +27,9 @@ const CardNews = ({ newsObject }: { newsObject: News }) => {
           <div className="flex lg:hidden w-full">
             <HeadingH3 label={newsObject.title.slice(0, 50)} />
           </div>
-          <div className="hidden lg:flex">{newsObject.excerpt}</div>
+          <div className={`${styles.excerpt} hidden lg:flex`}>
+            {newsObject.excerpt}
+          </div>
         </div>
         <ButtonReadMore color={"purple"} />
       </div>

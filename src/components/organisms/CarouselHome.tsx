@@ -1,7 +1,8 @@
 import { Carousel } from "flowbite-react";
 import CardBannerHome from "./CardBannerHome";
+import { Banner } from "@/utils/types";
 
-export function CarouselHome() {
+export function CarouselHome({ banners }: { banners: Banner[] }) {
   return (
     <div className="w-full">
       <Carousel
@@ -27,10 +28,9 @@ export function CarouselHome() {
           },
         }}
       >
-        <CardBannerHome />
-        <CardBannerHome />
-        <CardBannerHome />
-        <CardBannerHome />
+        {banners.map((banner, index: number) => (
+          <CardBannerHome key={index} banner={banner} />
+        ))}
       </Carousel>
     </div>
   );
