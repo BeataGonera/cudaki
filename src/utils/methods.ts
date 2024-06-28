@@ -238,3 +238,21 @@ export const getHomePageDetails = async () => {
     console.log(error);
   }
 };
+
+export const getMissionPageDetails = async () => {
+  try {
+    const response = await fetch(
+      "https://ijdb.com.pl/wp-json/wp/v2/pages?slug=misja-fundacji&acf_format=standard&_embed",
+      { next: { revalidate: 100 } }
+    );
+    const detailsRes = await response.json();
+    const missionPageDetails = {
+      firstPart: detailsRes[0].acf.czesc_pierwsza.zdjecie,
+      secondPart: detailsRes[0].acf.czesc_druga.zdjecie,
+      thirdPart: detailsRes[0].acf.czesc_trzecia.zdjecie,
+    };
+    return missionPageDetails;
+  } catch (error: any) {
+    console.log(error);
+  }
+};

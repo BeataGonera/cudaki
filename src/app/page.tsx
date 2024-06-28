@@ -6,7 +6,6 @@ import { getHomePageDetails } from "@/utils/methods";
 
 const Home = async () => {
   const homeDetails = await getHomePageDetails();
-  console.log(homeDetails);
   return (
     <main className="flex min-h-screen flex-col gap-24 lg:gap-24 items-center justify-between ">
       {homeDetails ? (

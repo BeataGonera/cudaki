@@ -1,7 +1,9 @@
 import Image from "next/image";
 import HeadingH3 from "../atoms/HeadingH3";
+import { getMissionPageDetails } from "@/utils/methods";
 
-const SectionMission = () => {
+const SectionMission = async () => {
+  const missionPageDetails = await getMissionPageDetails();
   return (
     <section className="w-full px-2 lg:px-24 2xl:px-128 flex flex-col gap-[32px] lg:gap-[48px]">
       <h1 className="text-h1-sm lg:text-h1">Nasza fundacja</h1>
@@ -12,7 +14,7 @@ const SectionMission = () => {
         />
         <div className="relative w-full aspect-square lg:w-1/2 lg:aspect-[1.6] flex">
           <Image
-            src="/misja1.webp"
+            src={missionPageDetails?.firstPart}
             fill
             className="w-full h-full object-cover rounded-[16px]"
             alt="Figurki Ironmana i Kapitana Ameryki"
@@ -69,7 +71,7 @@ const SectionMission = () => {
         />
         <div className="relative w-full aspect-square lg:aspect-auto lg:w-1/2 flex">
           <Image
-            src="/misja2.webp"
+            src={missionPageDetails?.secondPart}
             fill
             className="w-full h-full object-cover rounded-[16px]"
             alt="Zbliżenie na dłonie ludzi, którzy opierają się o drzewo."
@@ -81,7 +83,7 @@ const SectionMission = () => {
       <div className="flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] relative">
         <div className="relative w-full aspect-square lg:aspect-[1.6] lg:w-1/2 flex">
           <Image
-            src="/misja3.webp"
+            src={missionPageDetails?.thirdPart}
             fill
             className="w-full h-full object-cover rounded-[16px]"
             alt="Figurki Ironmana i Kapitana Ameryki"
