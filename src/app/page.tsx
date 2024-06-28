@@ -1,4 +1,3 @@
-import BannerHome from "@/components/organisms/BannerHome";
 import { CarouselHome } from "@/components/organisms/CarouselHome";
 import SectionAbout from "@/components/organisms/SectionAbout";
 import SectionFriends from "@/components/organisms/SectionFriends";
@@ -14,7 +13,9 @@ const Home = async () => {
         <CarouselHome banners={homeDetails.bannerCarousel} />
       ) : null}
       <SectionNews />
-      <SectionAbout />
+      {homeDetails ? (
+        <SectionAbout aboutDetails={homeDetails.aboutSection} />
+      ) : null}
       <SectionFriends />
     </main>
   );
