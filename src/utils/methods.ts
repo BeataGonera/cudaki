@@ -256,3 +256,21 @@ export const getMissionPageDetails = async () => {
     console.log(error);
   }
 };
+
+export const getPrivacyPolicyContent = async () => {
+  try {
+    const response = await fetch(
+      "https://ijdb.com.pl/wp-json/wp/v2/pages?slug=polityka-prywatnosci",
+      { next: { revalidate: 100 } }
+    );
+    const detailsRes = await response.json();
+    const parsedContent = parse(detailsRes[0].content.rendered);
+    const details = {
+      title: detailsRes[0].title.rendered,
+      content: parsedContent,
+    };
+    return details;
+  } catch (error: any) {
+    console.log(error);
+  }
+};

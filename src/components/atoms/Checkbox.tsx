@@ -10,7 +10,7 @@ export function CheckBox() {
         <Label htmlFor="accept" className="flex flex-col">
           <span className="font-bold">
             Zapoznałem się z{" "}
-            <a href="#" className="underline">
+            <a href="/polityka-prywatnosci" className="underline">
               polityką prywatności
             </a>
           </span>
