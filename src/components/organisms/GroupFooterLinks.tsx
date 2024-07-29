@@ -1,6 +1,13 @@
+import { News, Partner } from "@/utils/types";
 import Link from "next/link";
 
-const GroupFooterLinks = () => {
+const GroupFooterLinks = ({
+  partners,
+  news,
+}: {
+  partners: Partner[];
+  news: News[];
+}) => {
   return (
     <section className="w-full grid gap-4 grid-cols-2 grid-rows-2 lg:flex lg:justify-between">
       <div className="flex flex-col gap-4">
@@ -30,52 +37,34 @@ const GroupFooterLinks = () => {
 
       <div className="flex flex-col gap-4">
         <p className="text-[14px] font-bold text-white">Przyjaciele cudaka</p>
-        <Link
-          href="/misja-fundacji"
-          className="text-[#C8B6F6] text-[12px] font-bold"
-          aria-label="Przejdź do podstrony Misja Fundacji"
-        >
-          Lorem ipsum
-        </Link>
-        <Link
-          href="/misja-fundacji"
-          className="text-[#C8B6F6] text-[12px] font-bold"
-          aria-label="Przejdź do podstrony Władze Fundacji"
-        >
-          Lorem ipsum
-        </Link>
-        <Link
-          href="/misja-fundacji"
-          className="text-[#C8B6F6] text-[12px] font-bold"
-          aria-label="Przejdź do podstrony Dokumenty Fundacji"
-        >
-          Lorem ipsum
-        </Link>
+        {partners
+          ? partners.slice(0, 4).map((partner: Partner, index: number) => (
+              <Link
+                href={partner.link}
+                className="text-[#C8B6F6] text-[12px] font-bold"
+                aria-label={`Przejdź do podstrony ${partner.name}`}
+                key={index}
+              >
+                {partner.name}
+              </Link>
+            ))
+          : null}
       </div>
 
       <div className="flex flex-col gap-4">
         <p className="text-[14px] font-bold text-white">Aktualności</p>
-        <Link
-          href="/misja-fundacji"
-          className="text-[#C8B6F6] text-[12px] font-bold"
-          aria-label="Przejdź do podstrony Misja Fundacji"
-        >
-          Lorem ipsum{" "}
-        </Link>
-        <Link
-          href="/misja-fundacji"
-          className="text-[#C8B6F6] text-[12px] font-bold"
-          aria-label="Przejdź do podstrony Władze Fundacji"
-        >
-          Lorem ipsum{" "}
-        </Link>
-        <Link
-          href="/misja-fundacji"
-          className="text-[#C8B6F6] text-[12px] font-bold"
-          aria-label="Przejdź do podstrony Dokumenty Fundacji"
-        >
-          Lorem ipsum{" "}
-        </Link>
+        {news
+          ? news.map((news, index: number) => (
+              <Link
+                href={`/aktualnosci/${news.slug}`}
+                className="text-[#C8B6F6] text-[12px] font-bold"
+                aria-label={`Przejdź do podstrony ${news.title}`}
+                key={index}
+              >
+                {news.title}
+              </Link>
+            ))
+          : null}
       </div>
 
       <div className="flex flex-col gap-4">
