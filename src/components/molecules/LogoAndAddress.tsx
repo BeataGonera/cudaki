@@ -12,6 +12,8 @@ const LogoAndAddress = () => {
         <p>REGON 528431843</p>
         <p>NIP 7011201639</p>
         <p>KRS 0001101295</p>
+        <p>Nr konta bankowego: </p>
+        <p>PL 53 1090 1870 0000 0001 5823 6909</p>
       </div>
       <GroupMediaButtons />
     </div>

@@ -7,7 +7,7 @@ const GroupMediaButtons = () => {
   return (
     <div className="w-[92px] flex gap-[10px]">
       <ButtonMedia
-        href={""}
+        href={"https://www.facebook.com/FundacjaCudak"}
         icon={<IconFb />}
         ariaLabel="Przejdź do portalu Facebook"
       />
