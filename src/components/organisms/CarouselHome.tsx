@@ -1,8 +1,10 @@
 import { Carousel } from "flowbite-react";
 import CardBannerHome from "./CardBannerHome";
 import { Banner } from "@/utils/types";
+import { getLatestNews } from "@/utils/methods";
 
-export function CarouselHome({ banners }: { banners: Banner[] }) {
+export const CarouselHome = async ({ banners }: { banners: Banner[] }) => {
+  const latestNews = await getLatestNews();
   return (
     <div className="w-full">
       <Carousel
@@ -28,10 +30,12 @@ export function CarouselHome({ banners }: { banners: Banner[] }) {
           },
         }}
       >
-        {banners.map((banner, index: number) => (
-          <CardBannerHome key={index} banner={banner} />
-        ))}
+        {latestNews
+          ? latestNews.map((news, index: number) => (
+              <CardBannerHome key={index} banner={news} />
+            ))
+          : null}
       </Carousel>
     </div>
   );
-}
+};

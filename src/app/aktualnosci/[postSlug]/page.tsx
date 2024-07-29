@@ -26,7 +26,7 @@ const PostPage = async ({ params }: { params: { postSlug: string } }) => {
     <main className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">
       {post ? (
         <>
-          <h1 className="text-[48px] font-bold w-full lg:max-w-[560px]">
+          <h1 className="text-[48px] text-center font-bold lg:max-w-[800px]">
             {post.title}
           </h1>
           <div className="w-full flex flex-col gap-[16px]">
