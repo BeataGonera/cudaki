@@ -15,6 +15,7 @@ const ButtonMedia = ({
       href={href}
       className="border-[1px] border-[#C8B6F6] h-[24px] w-[24px] rounded-full flex justify-center items-center"
       aria-label={ariaLabel}
+      target="_blank"
     >
       {icon}
     </Link>
