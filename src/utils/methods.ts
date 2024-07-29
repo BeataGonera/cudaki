@@ -75,6 +75,13 @@ export const getLatestNews = async () => {
     );
     const newsRes = await response.json();
     const newsPosts: News[] = newsRes.map((newsRes: any) => {
+      const tagsRes = () => {
+        if (newsRes._embedded["wp:term"]) {
+          return newsRes._embedded["wp:term"]["0"];
+        } else {
+          return [""];
+        }
+      };
       const parsedExcerpt = parse(newsRes.excerpt.rendered) as any;
       return {
         title: newsRes.title.rendered,
@@ -84,6 +91,7 @@ export const getLatestNews = async () => {
         excerpt: parsedExcerpt,
         featuredImg: newsRes._embedded["wp:featuredmedia"]["0"].source_url,
         author: newsRes._embedded.author[0].name,
+        tags: createTagsArray(tagsRes()),
       } as News;
     });
     return newsPosts;

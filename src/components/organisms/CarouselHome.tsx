@@ -3,7 +3,7 @@ import CardBannerHome from "./CardBannerHome";
 import { Banner } from "@/utils/types";
 import { getLatestNews } from "@/utils/methods";
 
-export const CarouselHome = async ({ banners }: { banners: Banner[] }) => {
+export const CarouselHome = async () => {
   const latestNews = await getLatestNews();
   return (
     <div className="w-full">
