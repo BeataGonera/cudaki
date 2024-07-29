@@ -14,7 +14,9 @@ const Footer = async () => {
         <div className="px-2 lg:px-24 2xl:px-128 pt-32 flex flex-col gap-4">
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-24 justify-between w-full">
             <LogoAndAddress />
-            <GroupFooterLinks partners={partners} news={news} />
+            {partners && news ? (
+              <GroupFooterLinks partners={partners} news={news} />
+            ) : null}
           </div>
 
           <div className="w-full border-t-[1px] border-t-[#C8B6F6] py-4 flex flex-col lg:flex-row gap-2">
