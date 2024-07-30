@@ -3,7 +3,7 @@ import GroupMediaButtons from "./GroupMediaButtons";
 
 const LogoAndAddress = () => {
   return (
-    <div className="w-full lg:max-w-[193px] flex flex-col gap-4">
+    <div className="w-full lg:max-w-[300px] flex flex-col gap-4">
       <Logo />
       <div className="text-[#C8B6F6] text-[12px]">
         <p>Fundacja Cudak</p>
