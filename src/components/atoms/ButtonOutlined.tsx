@@ -1,10 +1,17 @@
 import styles from "@/app/styles.module.css";
 
-const ButtonOutlined = ({ label }: { label: string }) => {
+const ButtonOutlined = ({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}) => {
   return (
     <button
       type="button"
       className={`${styles.containerOutlined} text-primary-custom font-bold bg-none rounded-lg h-[52px] flex justify-center items-center gap-4 relative overflow-hidden w-full border-[1px] border-primary-custom z-10`}
+      onClick={onClick}
     >
       <div className="absolute top-0 left-0 w-full flex justify-center items-center h-full gap-4">
         {label}

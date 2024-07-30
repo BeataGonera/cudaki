@@ -9,6 +9,7 @@ import { LinkMenu } from "@/utils/types";
 import DrawerMenu from "./DrawerMenu/DrawerMenu";
 import IconMenu from "../atoms/IconMenu";
 import { useIsMenuDrawerOpenStore } from "@/state/isMenuDrawerOpen";
+import { useRouter } from "next/navigation";
 
 const linksAbout: LinkMenu[] = [
   {
@@ -29,7 +30,9 @@ const linksAbout: LinkMenu[] = [
 ];
 
 const Navigation = () => {
+  const router = useRouter();
   const { setIsMenuDrawerOpen } = useIsMenuDrawerOpenStore();
+
   return (
     <nav className="w-full h-[55px] mt-4 lg:mt-24">
       <div className="hidden lg:flex px-2 lg:px-24 2xl:px-128 justify-between items-center">
@@ -57,7 +60,10 @@ const Navigation = () => {
             <ButtonCTA label="Wesprzyj nas" icon={false} />
           </div>
           <div className="w-[176px]">
-            <ButtonOutlined label="FaniMani" />
+            <ButtonOutlined
+              label="FaniMani"
+              onClick={() => router.push("/fanimani")}
+            />
           </div>
         </div>
       </div>
