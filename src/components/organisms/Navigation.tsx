@@ -57,7 +57,7 @@ const Navigation = () => {
             </Link>
           </div>
           <div className="w-[176px]">
-            <ButtonCTA label="Wesprzyj nas" icon={false} />
+            <ButtonCTA label="Wesprzyj nas" icon={false} href="/wesprzyj" />
           </div>
           <div className="w-[176px]">
             <ButtonOutlined

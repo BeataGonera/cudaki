@@ -16,6 +16,7 @@ const CardNewsWide = ({ newsObject }: { newsObject: News }) => {
           fill
           className="w-full h-full object-cover rounded-[8px] group-hover:scale-110 duration-500 transition-transform"
         />
+        <div className="absolute w-full h-full bg-black opacity-40"></div>
       </div>
       <div className="absolute w-full h-full bottom-0 left-0 p-[32px] flex flex-col lg:flex-row ">
         <div className="flex w-full h-full justify-end flex-col gap-[16px]">

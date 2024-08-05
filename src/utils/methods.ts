@@ -31,6 +31,20 @@ export const getAllDocuments = async () => {
   }
 };
 
+export const getDocumentsPageDetails = async () => {
+  try {
+    const response = await fetch(
+      "https://ijdb.com.pl/wp-json/wp/v2/pages?slug=dokumenty-fundacji",
+      { next: { revalidate: 100 } }
+    );
+    const documentsPageRes = await response.json();
+    const content = documentsPageRes[0].content.rendered;
+    return parse(content);
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
 const formatDate = (date: string) => {
   const d = new Date(date);
   const day = d.getUTCDate();
