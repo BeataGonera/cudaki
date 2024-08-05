@@ -8,6 +8,7 @@ const ButtonCTA = ({
   pending,
   href,
   targetBlank,
+  action,
 }: {
   label: string;
   icon: boolean;
@@ -15,6 +16,7 @@ const ButtonCTA = ({
   pending?: boolean;
   href?: string;
   targetBlank?: boolean;
+  action?: () => void;
 }) => {
   return (
     <>
@@ -49,6 +51,7 @@ const ButtonCTA = ({
         <button
           type={submit ? `submit` : "button"}
           className={`${styles.container} text-white font-bold bg-primary-custom rounded-lg h-[52px] flex justify-center items-center gap-4 relative overflow-hidden w-full  z-10`}
+          onClick={action ? action : undefined}
         >
           <div className="absolute top-0 left-0 w-full flex justify-center items-center h-full gap-4">
             {!pending ? label : "Wysyłam ..."}
