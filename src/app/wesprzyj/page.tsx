@@ -3,6 +3,7 @@
 import ButtonCTA from "@/components/atoms/buttonCTA";
 import { Checkbox } from "flowbite-react/components/Checkbox";
 import { Label } from "flowbite-react/components/Label";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const amounts = [10, 20, 30, 50, 100, 150];
@@ -13,6 +14,8 @@ const PaymentPage = () => {
   const [amount, setAmount] = useState(0);
   const [accepted, setAccepted] = useState(true);
   const [email, setEmail] = useState("");
+  const pathname = usePathname();
+  console.log(pathname);
 
   const handlePayment = async () => {
     setLoading(true);
@@ -23,17 +26,17 @@ const PaymentPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount,
+          amount: "20.00",
           description: "Wplata",
-          email,
+          email: "beataiwonagonera@gmail.com",
         }),
       });
 
-      if (response.redirected) {
-        window.location.href = response.url; // Redirect to Tpay payment page
-      } else {
-        alert("Failed to initiate payment");
-      }
+      // if (response.redirected) {
+      //   window.location.href = response.url; // Redirect to Tpay payment page
+      // } else {
+      //   alert("Failed to initiate payment");
+      // }
     } catch (error) {
       console.error("Payment initiation error:", error);
       alert("Error initiating payment.");

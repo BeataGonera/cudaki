@@ -4,8 +4,8 @@ import crypto from "crypto";
 export async function POST(req: NextRequest) {
   const body = await req.formData();
 
-  const merchantId = process.env.TPAY_MERCHANT_ID!;
-  const secret = process.env.TPAY_SECRET_KEY!;
+  const merchantId = `${process.env.TPAY_MERCHANT_ID!}`;
+  const secret = `${process.env.TPAY_SECRET_KEY!}`;
 
   const receivedMd5 = body.get("md5sum");
   const amount = body.get("tr_amount");
