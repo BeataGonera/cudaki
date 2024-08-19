@@ -3,33 +3,42 @@
 import ButtonCTA from "@/components/atoms/buttonCTA";
 import { Checkbox } from "flowbite-react/components/Checkbox";
 import { Label } from "flowbite-react/components/Label";
-import { useEffect, useState } from "react";
-import { generateMd5Checksum } from "../../utils/md5";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const amounts = [10, 20, 30, 50, 100, 150];
 
 const PaymentPage = () => {
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [amount, setAmount] = useState(0);
   const [accepted, setAccepted] = useState(true);
-  const router = useRouter();
+  const [email, setEmail] = useState("");
 
-  const dataString = `1010${amount}.00985demo`;
-  const hashedData = generateMd5Checksum(dataString);
+  const handlePayment = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/tpay/redirect", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount,
+          description: "Wplata",
+          email,
+        }),
+      });
 
-  const support = () => {
-    setError("");
-    if (!amount) {
-      setError("Wybierz kwotę");
-      return;
-    } else if (!accepted) {
-      setError("Zgoda wymagana");
-      return;
-    } else {
-      router.push(
-        `https://secure.tpay.com/?id=${process.env.NEXT_PUBLIC_TPAY_ID}&amount=${amount}.00&description=wplata&md5sum=${hashedData}#page=panel-main-page`
-      );
+      if (response.redirected) {
+        window.location.href = response.url; // Redirect to Tpay payment page
+      } else {
+        alert("Failed to initiate payment");
+      }
+    } catch (error) {
+      console.error("Payment initiation error:", error);
+      alert("Error initiating payment.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,7 +107,7 @@ const PaymentPage = () => {
           <ButtonCTA
             label="Wpłać darowiznę"
             icon={false}
-            action={() => support()}
+            action={() => handlePayment()}
           />
         </div>
       </section>

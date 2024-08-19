@@ -19,7 +19,6 @@ export async function generateMetadata() {
 
 const DocumentsPage = async () => {
   const content = await getDocumentsPageDetails();
-  console.log(content);
   return (
     <main className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">
       <div className="flex flex-col lg:flex-row gap-[24px] justify-between w-full lg:mt-6 ">
