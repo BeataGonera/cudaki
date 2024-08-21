@@ -30,6 +30,7 @@ enum Error {
 const FormContact = () => {
   const [error, setError] = useState<Error | null>(null);
   const [pending, setPending] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean | undefined>(false);
 
   const [visitorData, setVisitorData] =
     useState<VisitorData>(initialVisitorData);
@@ -81,6 +82,7 @@ const FormContact = () => {
     if (result.success) {
       console.log(result);
       setPending(false);
+      setSuccess(true);
     } else {
       setError(Error.messageNotSent);
       setPending(false);
@@ -226,6 +228,11 @@ const FormContact = () => {
         >
           Wpisz treść wiadomości.
         </p>
+        {success ? (
+          <p className="text-center text-primary-custom font-bold">
+            Dziękujemy! Odpowiemy tak szybko jak to możliwe.
+          </p>
+        ) : null}
       </div>
       <div className="flex items-center gap-2">
         <CheckBox />
