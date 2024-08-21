@@ -20,3 +20,9 @@ primary_region = 'waw'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+
+[services.concurrency]
+    type = "connections"
+    hard_limit = 500
+    soft_limit = 500
