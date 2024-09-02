@@ -296,3 +296,21 @@ export const getPrivacyPolicyContent = async () => {
     console.log(error);
   }
 };
+
+export const getTermsAndConditionsContent = async () => {
+  try {
+    const response = await fetch(
+      "https://ijdb.com.pl/wp-json/wp/v2/pages?slug=regulamin",
+      { next: { revalidate: 100 } }
+    );
+    const detailsRes = await response.json();
+    const parsedContent = parse(detailsRes[0].content.rendered);
+    const details = {
+      title: detailsRes[0].title.rendered,
+      content: parsedContent,
+    };
+    return details;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
