@@ -10,7 +10,7 @@ const FormNewsletter = () => {
   const [error, setError] = useState<null | string>(null);
 
   const url =
-    "https://gmail.us21.list-manage.com/subscribe/post?u=92810ff87bc366f5e6b72dcdd&amp;id=0491afa6e7&amp;f_id=0012f0e6f0";
+    "https://yahoo.us9.list-manage.com/subscribe/post?u=48a2ce29c64a0cad59ef34bd8&id=221f4a6f78&f_id=004c51e1f0";
 
   return (
     <MailchimpSubscribe
@@ -66,7 +66,6 @@ const FormNewsletter = () => {
           {status === "success" && (
             <div>
               <p>Dziękujemy za zapisanie się do newslettera.</p>
-              <p>Aby potwierdzić kliknij link wysłany na podany email.</p>
             </div>
           )}
           <CheckBox />
