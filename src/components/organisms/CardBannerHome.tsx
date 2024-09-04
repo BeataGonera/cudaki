@@ -14,7 +14,7 @@ const CardBannerHome = ({ banner }: { banner: News }) => {
           className="object-cover rounded-[8px]"
         />
       </div>
-      <div className="flex flex-col aspect-square justify-between w-full lg:w-1/2 gap-2 lg:gap-[24px] max-w-[568px] lg:aspect-auto">
+      <div className="flex flex-col h-1/2 justify-between w-full lg:w-1/2 gap-2 lg:gap-[24px] max-w-[568px] lg:aspect-auto">
         {banner.tags ? <Chip label={banner.tags[0]} /> : null}
         <h1 className="text-h1-sm lg:text-h1 text-center lg:text-left">
           {banner.title}{" "}
