@@ -1,5 +1,7 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
 type FormState = {
   message: string;
 };
@@ -28,14 +30,15 @@ export const handlePaymentAction = async (
   formData: FormData
 ) => {
   const token = await generateToken();
-  console.log(token);
 
   try {
+    console.log(token);
     const response = await fetch("https://api.tpay.com/transactions/", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
+        Host: "tpay.com",
       },
       body: JSON.stringify({
         amount: 0.1,
@@ -46,11 +49,16 @@ export const handlePaymentAction = async (
         },
       }),
     });
+    if (!response.ok) {
+      return { message: "Coś poszło nie tak. Spróbuj ponownie później." };
+    }
+
     return {
       message:
         "Dziękujemy za wpłatę. Na Twój adres mailowy zostało wysłane potwierdzenie.",
     };
   } catch (error: any) {
+    console.log(error);
     return { message: error.message };
   }
 };
