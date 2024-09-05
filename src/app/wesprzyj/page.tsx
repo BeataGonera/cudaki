@@ -22,28 +22,6 @@ const PaymentPage = () => {
 
   const [state, formAction] = useFormState(handlePaymentAction, initialState);
 
-  const generateToken = async () => {
-    try {
-      const response = await fetch("https://api.tpay.com/oauth/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          client_id: "01J493K4PHPVGDP9G2B8MJ8NTX-01J70RP8BSG4C4QRB83PH90TE9",
-          client_secret:
-            "464d8e4c0dd40b4bfdf78b90dc91fd0c97acde6dbe8e95ae9bea08e8bb5c2fd3",
-        }),
-      });
-      const res = await response.json();
-      return res.access_token;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const token = generateToken();
-
   return (
     <div className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">
       <h1 className="font-bold text-[24px] lg:text-[80px] text-center w-full">

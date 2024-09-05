@@ -1,7 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
-
 type FormState = {
   message: string;
 };
@@ -25,7 +23,7 @@ const generateToken = async () => {
   }
 };
 
-export const handlePaymentTestAction = async (
+export const handlePaymentAction = async (
   prevState: FormState,
   formData: FormData
 ) => {
@@ -41,49 +39,13 @@ export const handlePaymentTestAction = async (
       },
       body: JSON.stringify({
         amount: 10.0,
-        description: "Wplata",
+        description: "wplata",
         payer: {
           email: "beataiwonagonera@gmail.com",
           name: "Beata Gonera",
         },
       }),
     });
-    if (!response.ok) {
-      return {
-        message: `Coś poszło nie tak. Spróbuj ponownie później.-${response.status}`,
-      };
-    }
-
-    return {
-      message:
-        "Dziękujemy za wpłatę. Na Twój adres mailowy zostało wysłane potwierdzenie.",
-    };
-  } catch (error: any) {
-    console.log(error);
-    return { message: error.message };
-  }
-};
-
-export const handlePaymentAction = async (
-  prevState: FormState,
-  formData: FormData
-) => {
-  console.log(process.env.TPAY_OLD_API_KEY);
-  try {
-    const response = await fetch(
-      `https://secure.tpay.com/api/gw/${process.env.TPAY_OLD_API_KEY}/transaction/create`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          amount: 10.0,
-          description: "Wplata",
-          payer: {
-            email: "beataiwonagonera@gmail.com",
-            name: "Beata Gonera",
-          },
-        }),
-      }
-    );
     if (!response.ok) {
       return {
         message: `Coś poszło nie tak. Spróbuj ponownie później.-${response.status}`,
