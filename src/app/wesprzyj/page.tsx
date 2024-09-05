@@ -3,7 +3,6 @@
 import ButtonCTA from "@/components/atoms/buttonCTA";
 import { Checkbox } from "flowbite-react/components/Checkbox";
 import { Label } from "flowbite-react/components/Label";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const amounts = [10, 20, 30, 50, 100, 150];
@@ -43,6 +42,22 @@ const PaymentPage = () => {
         Wesprzyj nas
       </h1>
       <section className="w-full lg:w-1/2 flex flex-col gap-[12px] font-bold z-10">
+        <div className="flex flex-col gap-[12px] mt-[24px] lg:mt-[48px] w-full mb-[24px] ">
+          <span>Podaj adres email</span>
+          <div className="flex gap-[12px] items-end">
+            <input
+              id="custom_amount"
+              name="custom_amount"
+              type="email"
+              placeholder="Email"
+              maxLength={150}
+              className={
+                "text-[18px] w-full bg-beige-bg h-[44px] rounded-[8px]"
+              }
+              onChange={(e: any) => setEmail(e.target.value)}
+            />
+          </div>
+        </div>
         <span>Wybierz kwotę wsparcia</span>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 ">
           {amounts.map((amount: number, index: number) => (
