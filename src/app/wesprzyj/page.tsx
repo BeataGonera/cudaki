@@ -3,7 +3,9 @@
 import ButtonCTA from "@/components/atoms/buttonCTA";
 import { Checkbox } from "flowbite-react/components/Checkbox";
 import { Label } from "flowbite-react/components/Label";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { handlePaymentAction } from "./actions";
+import { useFormState } from "react-dom";
 
 const amounts = [10, 20, 30, 50, 100, 150];
 
@@ -14,31 +16,14 @@ const PaymentPage = () => {
   const [accepted, setAccepted] = useState(true);
   const [email, setEmail] = useState("");
 
-  const handlePayment = async () => {
-    setLoading(true);
-
-    try {
-      const response = await fetch("/api/tpay/redirect", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: "20.00",
-          description: "Wplata",
-          email: email,
-        }),
-      });
-    } catch (error) {
-      console.error("Payment initiation error:", error);
-      alert("Error initiating payment.");
-    } finally {
-      setLoading(false);
-    }
+  const initialState = {
+    message: "",
   };
 
+  const [state, formAction] = useFormState(handlePaymentAction, initialState);
+
   return (
-    <main className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">
+    <div className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">
       <h1 className="font-bold text-[24px] lg:text-[80px] text-center w-full">
         Wesprzyj nas
       </h1>
@@ -111,22 +96,25 @@ const PaymentPage = () => {
             </p>
           </Label>
         </div>
-        <div className="w-full mt-[24px] flex flex-col gap-[12px]">
+        <form
+          className="w-full mt-[24px] flex flex-col gap-[12px]"
+          action={formAction}
+        >
           {error ? (
             <p className="text-center font-bold text-error-custom">{error}</p>
           ) : null}
-          <ButtonCTA
-            label="Wpłać darowiznę"
-            icon={false}
-            action={() => handlePayment()}
-          />
-        </div>
+          <input type="hidden" value={email} name="email" />
+          <input type="hidden" value={amount} name="amount" />
+
+          <ButtonCTA label="Wpłać darowiznę" icon={false} submit />
+          <p>{state.message}</p>
+        </form>
       </section>
       <img
         src="/VectorReverse.webp"
         className="absolute lg:h-[70%] left-[50%] hidden lg:block"
       />
-    </main>
+    </div>
   );
 };
 
