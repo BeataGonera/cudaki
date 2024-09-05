@@ -16,6 +16,7 @@ const PaymentPage = () => {
 
   const handlePayment = async () => {
     setLoading(true);
+
     try {
       const response = await fetch("/api/tpay/redirect", {
         method: "POST",
