@@ -3,7 +3,7 @@
 import ButtonCTA from "@/components/atoms/buttonCTA";
 import { Checkbox } from "flowbite-react/components/Checkbox";
 import { Label } from "flowbite-react/components/Label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const amounts = [10, 20, 30, 50, 100, 150];
 
