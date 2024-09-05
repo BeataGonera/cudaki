@@ -14,8 +14,6 @@ const PaymentPage = () => {
   const [amount, setAmount] = useState(0);
   const [accepted, setAccepted] = useState(true);
   const [email, setEmail] = useState("");
-  const pathname = usePathname();
-  console.log(pathname);
 
   const handlePayment = async () => {
     setLoading(true);
@@ -28,15 +26,9 @@ const PaymentPage = () => {
         body: JSON.stringify({
           amount: "20.00",
           description: "Wplata",
-          email: "beataiwonagonera@gmail.com",
+          email: email,
         }),
       });
-
-      // if (response.redirected) {
-      //   window.location.href = response.url; // Redirect to Tpay payment page
-      // } else {
-      //   alert("Failed to initiate payment");
-      // }
     } catch (error) {
       console.error("Payment initiation error:", error);
       alert("Error initiating payment.");

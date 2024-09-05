@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   const secret = `${process.env.TPAY_SECRET_KEY!}`;
   const crc = ""; // Optional, you can leave it empty or use it for tracking purposes
   //   const resultUrl = "http://localhost:3000/api/tpay/verify"; // Your endpoint for Tpay notifications
-  const returnUrl = "https://cudaki.vercel.app/dziekujemy"; // Where the user will be redirected after payment
+  const returnUrl = "https://cudaki.org/dziekujemy"; // Where the user will be redirected after payment
 
   // Create the MD5 hash signature required by Tpay
   const md5sum = crypto.createHash("md5");
@@ -17,7 +17,6 @@ export async function POST(req: NextRequest) {
     .update(`${merchantId}${amount}${crc}${secret}`)
     .digest("hex");
 
-  console.log(signature);
   // Generate the Tpay payment URL
   const paymentUrl = new URL("https://secure.tpay.com");
   paymentUrl.searchParams.append("id", merchantId);
