@@ -1,7 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 
+const generateToken = async () => {
+  try {
+    const response = await fetch("https://api.tpay.com/oauth/auth", {
+      method: "POST",
+      body: JSON.stringify({
+        client_id: process.env.TPAY_MERCHANT_ID,
+        client_secret: process.env.TPAY_SECRET_KEY,
+      }),
+    });
+    console.log(`generateToken ${response.status}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getTokens = async () => {
+  const response = await fetch("https://api.tpay.com/oauth/tokeninfo");
+  console.log(`token ${response.status}`);
+};
+
 export async function POST(req: NextRequest) {
+  generateToken();
+  getTokens();
+
   const { amount, description, email } = await req.json();
 
   // Replace these with your Tpay credentials
@@ -13,6 +36,7 @@ export async function POST(req: NextRequest) {
 
   // Create the MD5 hash signature required by Tpay
   const md5sum = crypto.createHash("md5");
+  console.log(`${merchantId} ${amount} ${crc} ${secret}`);
   const signature = md5sum
     .update(`${merchantId}${amount}${crc}${secret}`)
     .digest("hex");
