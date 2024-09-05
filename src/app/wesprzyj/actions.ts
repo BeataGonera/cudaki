@@ -41,16 +41,18 @@ export const handlePaymentAction = async (
         Host: "tpay.com",
       },
       body: JSON.stringify({
-        amount: 0.1,
-        description: "Test transaction",
+        amount: 10.0,
+        description: "Wpłata",
         payer: {
           email: "beataiwonagonera@gmail.com",
-          name: "Jan Nowak",
+          name: "Beata Gonera",
         },
       }),
     });
     if (!response.ok) {
-      return { message: "Coś poszło nie tak. Spróbuj ponownie później." };
+      return {
+        message: `Coś poszło nie tak. Spróbuj ponownie później.-${response.status}`,
+      };
     }
 
     return {
