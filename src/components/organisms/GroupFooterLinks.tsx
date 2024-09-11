@@ -76,7 +76,7 @@ const GroupFooterLinks = ({
           className="text-[#C8B6F6] text-[12px]"
           aria-label="Wyślij mail do fundacji"
         >
-          kontakt@cudak.porg
+          kontakt@cudak.org
         </Link>
       </div>
     </section>

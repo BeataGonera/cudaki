@@ -17,6 +17,7 @@ const PaymentPage = () => {
   const [accepted, setAccepted] = useState(true);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [customAmount, setCustomAmount] = useState("");
 
   const initialState = {
     message: "",
@@ -25,6 +26,16 @@ const PaymentPage = () => {
   const router = useRouter();
 
   const [state, formAction] = useFormState(handlePaymentAction, initialState);
+
+  const validateAmount = (amountValue: string | number) => {
+    const parsedAmount = parseFloat(amountValue.toString());
+
+    if (isNaN(parsedAmount) || parsedAmount <= 0) {
+      return "Wpisz poprawną kwotę darowizny";
+    }
+
+    return "";
+  };
 
   const handlePayment = async (e: any) => {
     e.preventDefault();
@@ -37,6 +48,13 @@ const PaymentPage = () => {
       setError("Wpisz imię");
       return;
     }
+    let selectedAmount = amount || parseFloat(customAmount);
+
+    const amountError = validateAmount(selectedAmount);
+    if (amountError) {
+      setError(amountError);
+      return;
+    }
     setLoading(true);
     try {
       const response = await fetch("/api", {
@@ -46,7 +64,7 @@ const PaymentPage = () => {
           "accept-encoding": "text/plain",
         },
         body: JSON.stringify({
-          amount: amount,
+          amount: selectedAmount,
           description: "wsparcie fundacji Cudak",
           payer: {
             email: email,
@@ -120,7 +138,7 @@ const PaymentPage = () => {
                 className={
                   "text-[18px] w-full bg-beige-bg h-[44px] rounded-[8px]"
                 }
-                onChange={(e: any) => setAmount(e.target.value)}
+                onChange={(e: any) => setCustomAmount(e.target.value)}
               />
               zł
             </div>
