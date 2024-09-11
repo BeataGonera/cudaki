@@ -70,19 +70,13 @@ const GroupFooterLinks = ({
       <div className="flex flex-col gap-4">
         <p className="text-[14px] font-bold text-white">Kontakt</p>
         <p className="text-[#C8B6F6] text-[12px] font-bold">Fundacja CUDAK</p>
+
         <Link
-          href="tel:+48123456789"
-          className="text-[#C8B6F6] text-[12px]"
-          aria-label="Zadzwoń do fundacji"
-        >
-          +48 123 456 789
-        </Link>
-        <Link
-          href="mailto:pomoc@cudak.pl"
+          href="mailto:kontakt@cudak.org"
           className="text-[#C8B6F6] text-[12px]"
           aria-label="Wyślij mail do fundacji"
         >
-          pomoc@cudak.pl
+          kontakt@cudak.porg
         </Link>
       </div>
     </section>

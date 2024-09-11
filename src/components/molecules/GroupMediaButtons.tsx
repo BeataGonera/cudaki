@@ -2,6 +2,7 @@ import ButtonMedia from "../atoms/ButtonMedia";
 import IconFb from "../atoms/IconFb";
 import IconInsta from "../atoms/IconInsta";
 import IconLinkedIn from "../atoms/IconLinkedIn";
+import IconX from "../atoms/IconX";
 
 const GroupMediaButtons = () => {
   return (
@@ -12,14 +13,9 @@ const GroupMediaButtons = () => {
         ariaLabel="Przejdź do portalu Facebook"
       />
       <ButtonMedia
-        href={""}
-        icon={<IconInsta />}
-        ariaLabel="Przejdź do portalu Instagram"
-      />
-      <ButtonMedia
-        href={""}
-        icon={<IconLinkedIn />}
-        ariaLabel="Przejdź do portalu LinkedIn"
+        href={"https://x.com/FundacjaCudak"}
+        icon={<IconX />}
+        ariaLabel="Przejdź do portalu X"
       />
     </div>
   );
