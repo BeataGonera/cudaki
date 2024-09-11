@@ -47,6 +47,7 @@ export const handlePaymentAction = async (
       }),
     });
     if (!response.ok) {
+      console.log(response);
       return {
         message: `Coś poszło nie tak. Spróbuj ponownie później.-${response.status}`,
       };
@@ -58,6 +59,6 @@ export const handlePaymentAction = async (
     };
   } catch (error: any) {
     console.log(error);
-    return { message: error.message };
+    return { message: `${error.message} ${error.status}` };
   }
 };

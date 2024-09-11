@@ -6,8 +6,9 @@ import { Label } from "flowbite-react/components/Label";
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { handlePaymentAction } from "./actions";
+import { useRouter } from "next/navigation";
 
-const amounts = [10, 20, 30, 50, 100, 150];
+const amounts = [10.0, 20.0, 30.0, 50.0, 100.0, 150.0];
 
 const PaymentPage = () => {
   const [loading, setLoading] = useState(false);
@@ -15,12 +16,52 @@ const PaymentPage = () => {
   const [amount, setAmount] = useState(0);
   const [accepted, setAccepted] = useState(true);
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
   const initialState = {
     message: "",
   };
 
+  const router = useRouter();
+
   const [state, formAction] = useFormState(handlePaymentAction, initialState);
+
+  const handlePayment = async (e: any) => {
+    e.preventDefault();
+    setError("");
+    if (!email) {
+      setError("Wpisz poprawny adres email");
+      return;
+    }
+    if (!name) {
+      setError("Wpisz imię");
+      return;
+    }
+    setLoading(true);
+    try {
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "accept-encoding": "text/plain",
+        },
+        body: JSON.stringify({
+          amount: amount,
+          description: "wsparcie fundacji Cudak",
+          payer: {
+            email: email,
+            name: name,
+          },
+        }),
+      });
+      const data = await response.json();
+      router.push(data.transactionPaymentUrl);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-[24px] lg:gap-[48px] items-center justify-between pt-12 lg:pt-[6rem] px-2 lg:px-24 2xl:px-128">
@@ -29,11 +70,22 @@ const PaymentPage = () => {
       </h1>
       <section className="w-full lg:w-1/2 flex flex-col gap-[12px] font-bold z-10">
         <div className="flex flex-col gap-[12px] mt-[24px] lg:mt-[48px] w-full mb-[24px] ">
-          <span>Podaj adres email</span>
+          <span>Podaj imię i adres email</span>
           <div className="flex gap-[12px] items-end">
             <input
-              id="custom_amount"
-              name="custom_amount"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Imię"
+              maxLength={30}
+              className={
+                "text-[18px] w-full bg-beige-bg h-[44px] rounded-[8px]"
+              }
+              onChange={(e: any) => setName(e.target.value)}
+            />
+            <input
+              id="email"
+              name="email"
               type="email"
               placeholder="Email"
               maxLength={150}
@@ -98,16 +150,16 @@ const PaymentPage = () => {
         </div>
         <form
           className="w-full mt-[24px] flex flex-col gap-[12px]"
-          action={formAction}
+          onSubmit={(e) => handlePayment(e)}
         >
+          <ButtonCTA
+            label={!loading ? "Wpłać darowiznę" : "Przekierowuję"}
+            icon={false}
+            submit
+          />
           {error ? (
             <p className="text-center font-bold text-error-custom">{error}</p>
           ) : null}
-          <input type="hidden" value={email} name="email" />
-          <input type="hidden" value={amount} name="amount" />
-
-          <ButtonCTA label="Wpłać darowiznę" icon={false} submit />
-          <p>{state.message}</p>
         </form>
       </section>
       <img

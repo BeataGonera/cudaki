@@ -8,7 +8,7 @@ import Navigation from "@/components/organisms/Navigation";
 const raleway = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cudaki",
+  title: "Cudak",
   description:
     "Naszą misją jest zwiększanie wiedzy, jak również docieranie do grup dzieci i młodzieży, zainteresowanych światem cyfrowym.",
 };
